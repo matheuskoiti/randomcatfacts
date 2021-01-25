@@ -1,8 +1,11 @@
 package com.studiomk.randomcatfacts.presentation.viewModel
 
-import androidx.databinding.ObservableField
+import androidx.lifecycle.ViewModel
 
-class HomeViewModel {
-    val title = ObservableField<String>()
-    val buttonText = ObservableField<String>()
+class HomeViewModel : ViewModel() {
+
+    fun onStartClick() {
+
+    }
+
 }

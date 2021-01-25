@@ -1,4 +1,6 @@
 package com.studiomk.randomcatfacts.presentation.viewModel
 
-class CatFactsViewModel {
+import androidx.lifecycle.ViewModel
+
+class CatFactsViewModel : ViewModel() {
 }
