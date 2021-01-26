@@ -1,6 +1,5 @@
 package com.studiomk.randomcatfacts.presentation.fragment
 
-import android.R.attr.data
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.studiomk.randomcatfacts.R
 import com.studiomk.randomcatfacts.databinding.FragmentHomeBinding
 import com.studiomk.randomcatfacts.presentation.viewModel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-
 
 class HomeFragment : Fragment() {
 
