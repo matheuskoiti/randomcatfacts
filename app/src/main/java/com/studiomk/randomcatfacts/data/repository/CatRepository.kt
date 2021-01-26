@@ -1,6 +1,7 @@
 package com.studiomk.randomcatfacts.data.repository
 
 import com.google.gson.GsonBuilder
+import com.studiomk.randomcatfacts.data.model.CatFact
 import com.studiomk.randomcatfacts.data.model.CatImage
 import com.studiomk.randomcatfacts.data.service.CatService
 import retrofit2.Retrofit
@@ -15,7 +16,18 @@ class CatRepository {
             .build().create(CatService::class.java)
     }
 
+    private val catFactService by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://cat-fact.herokuapp.com/")
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .build().create(CatService::class.java)
+    }
+
     suspend fun getCatImages(): List<CatImage> {
         return theCatApiService.getRandomCatImage()
+    }
+
+    suspend fun getCatFact(): CatFact {
+        return catFactService.getRandomCatFact()
     }
 }
