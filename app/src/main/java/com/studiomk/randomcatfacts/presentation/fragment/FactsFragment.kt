@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import com.studiomk.randomcatfacts.R
 import com.studiomk.randomcatfacts.databinding.FragmentFactsBinding
