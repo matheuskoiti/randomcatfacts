@@ -58,7 +58,7 @@ class CatFactsViewModel : ViewModel() {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     view?.visibility = View.GONE
-                }, 5000L)
+                }, 4000L)
             }
         }
     }

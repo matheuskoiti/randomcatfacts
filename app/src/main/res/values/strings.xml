@@ -16,4 +16,8 @@
     <!-- Facts Fragment   -->
     <string name="facts_back">Return to Home</string>
     <string name="facts_message">Next fact</string>
+
+    <!--  Menu  -->
+    <string name="menu_cats">Cats</string>
+    <string name="menu_dogs">Dogs</string>
 </resources>
