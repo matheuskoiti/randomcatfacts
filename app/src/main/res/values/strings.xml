@@ -10,12 +10,10 @@
 
     <!-- Home Fragment   -->
     <string name="home_title">Welcome do Random Cat Facts</string>
-    <string name="home_begin">Start</string>
+    <string name="home_begin">Start!</string>
+    <string name="home_about">About</string>
 
     <!-- Facts Fragment   -->
     <string name="facts_back">Return to Home</string>
     <string name="facts_message">Next fact</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
