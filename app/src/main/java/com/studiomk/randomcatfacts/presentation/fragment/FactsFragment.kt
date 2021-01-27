@@ -30,14 +30,7 @@ class FactsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initListeners()
         showFirstFact()
-    }
-
-    private fun initListeners() {
-        facts_back_button?.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
     }
 
     private fun showFirstFact() {
