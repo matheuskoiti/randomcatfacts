@@ -3,6 +3,7 @@ package com.studiomk.randomcatfacts.data.repository
 import com.google.gson.GsonBuilder
 import com.studiomk.randomcatfacts.data.model.CatFact
 import com.studiomk.randomcatfacts.data.model.CatImage
+import com.studiomk.randomcatfacts.data.model.FactStatus
 import com.studiomk.randomcatfacts.data.service.CatService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,6 +26,10 @@ class CatRepository {
     }
 
     suspend fun getCatImages(): List<CatImage> {
+        /**
+         * Instead of a simple try/catch, I could create a wrapper class to handle and return
+         * success, generic or specific error
+         */
         return try {
             theCatApiService.getRandomCatImage()
         } catch (e: Exception) {
@@ -34,10 +39,14 @@ class CatRepository {
     }
 
     suspend fun getCatFact(): CatFact {
+        /**
+         * Instead of a simple try/catch, I could create a wrapper class to handle and return
+         * success, generic or specific error
+         */
         return try {
             catFactService.getRandomCatFact()
         } catch (e: Exception) {
-            CatFact("An error has occurred, please click Next Fact to try again")
+            CatFact("An error has occurred, please click Next Fact to try again", FactStatus(true))
         }
     }
 }

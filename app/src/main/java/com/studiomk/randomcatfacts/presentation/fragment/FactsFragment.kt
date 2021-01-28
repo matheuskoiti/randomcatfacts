@@ -33,10 +33,13 @@ class FactsFragment : Fragment() {
     }
 
     private fun showFirstFact() {
-        factsViewModel.getCatImage().observe(this, Observer {
+        /**
+         * I could just call factsViewModel.onNextFactClick() but I kept this way for study purposes
+         */
+        factsViewModel.getFirstCatImage().observe(this, Observer {
             Picasso.with(context).load(it.first().url).into(facts_image)
         })
-        factsViewModel.getCatFact().observe(this, Observer {
+        factsViewModel.getFirstCatFact().observe(this, Observer {
             facts_message?.text = it.text
         })
     }

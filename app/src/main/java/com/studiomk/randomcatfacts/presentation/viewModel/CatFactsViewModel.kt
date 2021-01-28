@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.squareup.picasso.Picasso
+import com.studiomk.randomcatfacts.data.model.CatFact
+import com.studiomk.randomcatfacts.data.model.FactStatus
 import com.studiomk.randomcatfacts.data.repository.CatRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,21 +22,33 @@ class CatFactsViewModel : ViewModel() {
     val imageUrl = ObservableField<String>()
     val loading = ObservableField<String>()
 
-    fun getCatImage() = liveData(Dispatchers.IO) {
+    /**
+     * I could just call factsViewModel.onNextFactClick() but I kept this way for study purposes
+     */
+    fun getFirstCatImage() = liveData(Dispatchers.IO) {
         val catImage = repository.getCatImages()
         emit(catImage)
         loading.set("stopLoading")
     }
 
-    fun getCatFact() = liveData(Dispatchers.IO) {
-        val catFact = repository.getCatFact()
+    /**
+     * I could just call factsViewModel.onNextFactClick() but I kept this way for study purposes
+     */
+    fun getFirstCatFact() = liveData(Dispatchers.IO) {
+        var catFact: CatFact
+        do {
+            catFact = repository.getCatFact()
+        } while (!catFact.status.verified)
         emit(catFact)
     }
 
     fun onNextFactClick() {
         loading.set("startLoading")
         viewModelScope.launch {
-            val catFact = repository.getCatFact()
+            var catFact: CatFact
+            do {
+                catFact = repository.getCatFact()
+            } while (!catFact.status.verified)
             factText.set(catFact.text)
 
             val catImage = repository.getCatImages()
