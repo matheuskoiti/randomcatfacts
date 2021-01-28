@@ -6,6 +6,7 @@ import com.studiomk.randomcatfacts.data.model.CatImage
 import com.studiomk.randomcatfacts.data.service.CatService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 
 class CatRepository {
 
@@ -24,10 +25,19 @@ class CatRepository {
     }
 
     suspend fun getCatImages(): List<CatImage> {
-        return theCatApiService.getRandomCatImage()
+        return try {
+            theCatApiService.getRandomCatImage()
+        } catch (e: Exception) {
+            arrayListOf(CatImage(url = "https://cdn2.thecatapi.com/images/293.jpg",
+                width = "429", height = "500"))
+        }
     }
 
     suspend fun getCatFact(): CatFact {
-        return catFactService.getRandomCatFact()
+        return try {
+            catFactService.getRandomCatFact()
+        } catch (e: Exception) {
+            CatFact("An error has occurred, please click Next Fact to try again")
+        }
     }
 }
