@@ -22,6 +22,7 @@ class DogFactsViewModel(private val repository: DogRepository): ViewModel() {
     fun getFirstDogFact() = liveData(Dispatchers.IO) {
         val dogFact = repository.getDogFact()
         emit(dogFact)
+        loading.set("stopLoading")
     }
 
     fun getFirstDogImage() = liveData(Dispatchers.IO) {
@@ -56,7 +57,7 @@ class DogFactsViewModel(private val repository: DogRepository): ViewModel() {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     view?.visibility = View.GONE
-                }, 4000L)
+                }, 3000L)
             }
         }
     }

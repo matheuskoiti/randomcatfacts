@@ -71,7 +71,7 @@ class CatFactsViewModel(private val repository: CatRepository) : ViewModel() {
             } else {
                 Handler(Looper.getMainLooper()).postDelayed({
                     view?.visibility = View.GONE
-                }, 4000L)
+                }, 3000L)
             }
         }
     }

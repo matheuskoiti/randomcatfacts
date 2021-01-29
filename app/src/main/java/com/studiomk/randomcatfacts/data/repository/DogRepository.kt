@@ -30,7 +30,7 @@ class DogRepository {
         return try {
             dogCeoService.getRandomDogImage()
         } catch (e: Exception) {
-            DogImage(message = "")
+            DogImage(message = "https://cdn2.thecatapi.com/images/293.jpg")
         }
     }
 
@@ -42,7 +42,7 @@ class DogRepository {
         return try {
             dogApiService.getRandomDogFact()
         } catch (e: Exception) {
-            DogFact(facts = arrayListOf(""))
+            DogFact(facts = arrayListOf("An error has occurred, please click Next Fact to try again"))
         }
     }
 }
