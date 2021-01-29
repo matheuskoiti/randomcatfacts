@@ -14,8 +14,7 @@ import com.studiomk.randomcatfacts.data.repository.DogRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DogFactsViewModel: ViewModel() {
-    private val repository = DogRepository()
+class DogFactsViewModel(private val repository: DogRepository): ViewModel() {
     val factText = ObservableField<String>()
     val imageUrl = ObservableField<String>()
     val loading = ObservableField<String>()

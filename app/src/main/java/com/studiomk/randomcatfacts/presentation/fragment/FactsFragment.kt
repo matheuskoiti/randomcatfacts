@@ -13,17 +13,17 @@ import com.studiomk.randomcatfacts.R
 import com.studiomk.randomcatfacts.databinding.FragmentFactsBinding
 import com.studiomk.randomcatfacts.presentation.viewModel.CatFactsViewModel
 import kotlinx.android.synthetic.main.fragment_facts.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FactsFragment : Fragment() {
-
-    private lateinit var factsViewModel: CatFactsViewModel
+    //This is the way without Koin injection
+    //val viewModel = ViewModelProviders.of(this).get(CatFactsViewModel::class.java)
+    private val factsViewModel by viewModel<CatFactsViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentFactsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_facts, container, false)
-        val viewModel = ViewModelProviders.of(this).get(CatFactsViewModel::class.java)
-        binding.factsViewModel = viewModel
+        binding.factsViewModel = factsViewModel
         binding.lifecycleOwner = this
-        factsViewModel = viewModel
         return binding.root
     }
 

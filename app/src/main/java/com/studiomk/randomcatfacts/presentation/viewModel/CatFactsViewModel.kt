@@ -16,8 +16,7 @@ import com.studiomk.randomcatfacts.data.repository.CatRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CatFactsViewModel : ViewModel() {
-    private val repository = CatRepository()
+class CatFactsViewModel(private val repository: CatRepository) : ViewModel() {
     val factText = ObservableField<String>()
     val imageUrl = ObservableField<String>()
     val loading = ObservableField<String>()

@@ -16,18 +16,18 @@ import com.studiomk.randomcatfacts.presentation.viewModel.CatFactsViewModel
 import com.studiomk.randomcatfacts.presentation.viewModel.DogFactsViewModel
 import kotlinx.android.synthetic.main.fragment_dog_facts.*
 import kotlinx.android.synthetic.main.fragment_facts.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DogFactsFragment : Fragment() {
-
-    private lateinit var dogFactsViewModel: DogFactsViewModel
+    //This is the way without Koin injection
+    //val viewModel = ViewModelProviders.of(this).get(DogFactsViewModel::class.java)
+    private val dogFactsViewModel by viewModel<DogFactsViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentDogFactsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dog_facts, container, false)
-        val viewModel = ViewModelProviders.of(this).get(DogFactsViewModel::class.java)
-        binding.dogFactsViewModel = viewModel
+        binding.dogFactsViewModel = dogFactsViewModel
         binding.lifecycleOwner = this
-        dogFactsViewModel = viewModel
         return binding.root
     }
 
