@@ -1,17 +1,38 @@
 package com.studiomk.randomcatfacts.presentation.activity
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.studiomk.randomcatfacts.R
+import com.studiomk.randomcatfacts.presentation.fragment.DogFactsFragment
+import com.studiomk.randomcatfacts.presentation.fragment.FactsFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initNavigationListeners()
+    }
+
+    private fun initNavigationListeners() {
+        main_navigation?.setOnNavigationItemSelectedListener { itemId ->
+            when(itemId.itemId) {
+                R.id.tab_cat -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, FactsFragment())
+                        .commit()
+                    true
+                }
+                R.id.tab_dog -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, DogFactsFragment())
+                        .commit()
+                    true
+                }
+                else -> true
+
+            }
+        }
     }
 }

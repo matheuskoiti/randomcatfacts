@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dogFactsViewModel"
+            type="com.studiomk.randomcatfacts.presentation.viewModel.DogFactsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.fragment.DogFactsFragment">
+
+        <ImageView
+            android:id="@+id/dog_facts_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:imgUrl="@{dogFactsViewModel.imageUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dog_facts_card_view"
+            tools:ignore="ContentDescription" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/dog_facts_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@id/dog_facts_next_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+
+            <TextView
+                android:id="@+id/dog_facts_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dogFactsViewModel.factText}"
+                android:layout_margin="16dp" />
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/dog_facts_next_button"
+            style="@style/ButtonPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/facts_message"
+            android:onClick="@{() -> dogFactsViewModel.onNextFactClick()}"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <RelativeLayout
+            android:id="@+id/dog_facts_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            tools:visibility="gone"
+            app:loading="@{dogFactsViewModel.loading}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="5dp"
+            android:background="#FFFFFF">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/dog_facts_loading_lootie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="dog-loading.json"
+                app:lottie_loop="true" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

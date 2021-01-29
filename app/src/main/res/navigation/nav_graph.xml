@@ -8,7 +8,23 @@
     <fragment
         android:id="@+id/FactsFragment"
         android:name="com.studiomk.randomcatfacts.presentation.fragment.FactsFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/cat_fragment"
         tools:layout="@layout/fragment_facts">
+
+        <action
+            android:id="@+id/action_CatFragment_to_DogFragment"
+            app:destination="@id/DogFactsFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/DogFactsFragment"
+        android:name="com.studiomk.randomcatfacts.presentation.fragment.DogFactsFragment"
+        android:label="@string/dog_fragment"
+        tools:layout="@layout/fragment_facts">
+
+        <action
+            android:id="@+id/action_DogFragment_to_CatFragment"
+            app:destination="@id/FactsFragment" />
     </fragment>
 </navigation>
