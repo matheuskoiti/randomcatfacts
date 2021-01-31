@@ -34,10 +34,10 @@ class DogFactsViewModel(private val repository: DogRepository): ViewModel() {
         loading.set("startLoading")
         viewModelScope.launch {
             val dogFact= repository.getDogFact()
-            factText.set(dogFact.facts.first())
+            factText.set(dogFact.first().fact)
 
             val dogImage = repository.getDogImages()
-            imageUrl.set(dogImage.message)
+            imageUrl.set(dogImage.first().url)
             loading.set("stopLoading")
         }
     }

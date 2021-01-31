@@ -1,3 +1,3 @@
 package com.studiomk.randomcatfacts.data.model
 
-class DogImage(val message: String)
+class DogImage(val url: String)

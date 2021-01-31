@@ -7,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.squareup.picasso.Picasso
 import com.studiomk.randomcatfacts.R
 import com.studiomk.randomcatfacts.databinding.FragmentDogFactsBinding
-import com.studiomk.randomcatfacts.databinding.FragmentFactsBinding
-import com.studiomk.randomcatfacts.presentation.viewModel.CatFactsViewModel
 import com.studiomk.randomcatfacts.presentation.viewModel.DogFactsViewModel
 import kotlinx.android.synthetic.main.fragment_dog_facts.*
-import kotlinx.android.synthetic.main.fragment_facts.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DogFactsFragment : Fragment() {
@@ -41,10 +37,10 @@ class DogFactsFragment : Fragment() {
          * I could just call dogFactsViewModel.onNextFactClick() but I kept this way for study purposes
          */
         dogFactsViewModel.getFirstDogFact().observe(this, Observer {
-            dog_facts_message?.text = it.facts.first()
+            dog_facts_message?.text = it.first().fact
         })
         dogFactsViewModel.getFirstDogImage().observe(this, Observer {
-            Picasso.with(context).load(it.message).into(dog_facts_image)
+            Picasso.with(context).load(it.first().url).into(dog_facts_image)
         })
     }
 

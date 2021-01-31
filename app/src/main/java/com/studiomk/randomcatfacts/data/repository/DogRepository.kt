@@ -10,39 +10,39 @@ import java.lang.Exception
 class DogRepository {
     private val dogApiService by lazy {
         Retrofit.Builder()
-            .baseUrl("https://dog-api.kinduff.com/")
+            .baseUrl("https://api.thedogapi.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(DogService::class.java)
     }
 
-    private val dogCeoService by lazy {
+    private val dogFactsApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://dog.ceo/api/breeds/")
+            .baseUrl("https://dog-facts-api.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(DogService::class.java)
     }
 
-    suspend fun getDogImages(): DogImage {
+    suspend fun getDogImages(): List<DogImage> {
         /**
          * Instead of a simple try/catch, I could create a wrapper class to handle and return
          * success, generic or specific error
          */
         return try {
-            dogCeoService.getRandomDogImage()
+            dogApiService.getRandomDogImage()
         } catch (e: Exception) {
-            DogImage(message = "https://cdn2.thecatapi.com/images/293.jpg")
+            arrayListOf(DogImage(url = "https://cdn2.thedogapi.com/images/SJyBfg5NX_1280.jpg"))
         }
     }
 
-    suspend fun getDogFact(): DogFact {
+    suspend fun getDogFact(): List<DogFact> {
         /**
          * Instead of a simple try/catch, I could create a wrapper class to handle and return
          * success, generic or specific error
          */
         return try {
-            dogApiService.getRandomDogFact()
+            dogFactsApi.getRandomDogFact()
         } catch (e: Exception) {
-            DogFact(facts = arrayListOf("An error has occurred, please click Next Fact to try again"))
+            arrayListOf(DogFact("An error has occurred, please click Next Fact to try again"))
         }
     }
 }

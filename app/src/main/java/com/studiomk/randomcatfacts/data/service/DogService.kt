@@ -6,13 +6,13 @@ import retrofit2.http.GET
 
 interface DogService {
     companion object {
-        const val RANDOM_DOG_IMAGE_URL = "image/random"
-        const val RANDOM_DOG_FACT_URL = "api/facts"
+        const val RANDOM_DOG_IMAGE_URL = "v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1"
+        const val RANDOM_DOG_FACT_URL = "api/v1/resources/dogs?number=1"
     }
 
     @GET(RANDOM_DOG_IMAGE_URL)
-    suspend fun getRandomDogImage(): DogImage
+    suspend fun getRandomDogImage(): List<DogImage>
 
     @GET(RANDOM_DOG_FACT_URL)
-    suspend fun getRandomDogFact(): DogFact
+    suspend fun getRandomDogFact(): List<DogFact>
 }
