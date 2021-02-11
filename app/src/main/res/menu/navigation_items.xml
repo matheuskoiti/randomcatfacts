@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_dog"
         android:title="@string/menu_dogs" />
 
+    <item
+        android:id="@+id/tab_panda"
+        android:icon="@drawable/ic_panda"
+        android:title="@string/menu_pandas" />
+
 </menu>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.studiomk.randomcatfacts.R
 import com.studiomk.randomcatfacts.presentation.fragment.DogFactsFragment
 import com.studiomk.randomcatfacts.presentation.fragment.FactsFragment
+import com.studiomk.randomcatfacts.presentation.fragment.PandaFactsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,6 +35,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.tab_dog -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, DogFactsFragment())
+                        .commit()
+                    true
+                }
+                R.id.tab_panda -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment, PandaFactsFragment())
                         .commit()
                     true
                 }

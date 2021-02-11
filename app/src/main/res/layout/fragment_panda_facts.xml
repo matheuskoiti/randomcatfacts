@@ -5,70 +5,69 @@
 
     <data>
         <variable
-            name="dogFactsViewModel"
-            type="com.studiomk.randomcatfacts.presentation.viewModel.DogFactsViewModel" />
+            name="pandaFactsViewModel"
+            type="com.studiomk.randomcatfacts.presentation.viewModel.PandaFactsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.fragment.DogFactsFragment">
+        tools:context=".presentation.fragment.FactsFragment">
 
         <ImageView
-            android:id="@+id/dog_facts_image"
+            android:id="@+id/facts_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            app:imgUrl="@{dogFactsViewModel.imageUrl}"
+            android:scaleType="centerCrop"
+            app:imgUrl="@{pandaFactsViewModel.imageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/dog_facts_card_view"
+            app:layout_constraintBottom_toTopOf="@id/facts_card_view"
             tools:ignore="ContentDescription" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/dog_facts_card_view"
+            android:id="@+id/facts_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@id/dog_facts_next_button"
+            app:layout_constraintBottom_toTopOf="@id/facts_next_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" >
 
             <TextView
-                android:id="@+id/dog_facts_message"
+                android:id="@+id/facts_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{dogFactsViewModel.factText}"
-                android:layout_margin="16dp" />
+                android:layout_margin="16dp"
+                android:text="@{pandaFactsViewModel.factText}" />
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/dog_facts_next_button"
+            android:id="@+id/facts_next_button"
             style="@style/ButtonPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/facts_message"
-            android:onClick="@{() -> dogFactsViewModel.onNextFactClick()}"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{() -> pandaFactsViewModel.onNextFactClick()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
         <RelativeLayout
-            android:id="@+id/dog_facts_loading"
+            android:id="@+id/facts_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
             tools:visibility="gone"
-            app:loading="@{dogFactsViewModel.loading}"
+            app:loading="@{pandaFactsViewModel.loading}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,12 +76,12 @@
             android:background="#FFFFFF">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/dog_facts_loading_lootie"
+                android:id="@+id/facts_loading_lootie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 app:lottie_autoPlay="true"
-                app:lottie_fileName="dog-loading.json"
+                app:lottie_fileName="panda-loading.json"
                 app:lottie_loop="true" />
         </RelativeLayout>
 
