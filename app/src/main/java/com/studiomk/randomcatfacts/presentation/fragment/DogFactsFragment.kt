@@ -37,7 +37,7 @@ class DogFactsFragment : Fragment() {
          * I could just call dogFactsViewModel.onNextFactClick() but I kept this way for study purposes
          */
         dogFactsViewModel.getFirstDogFact().observe(this, Observer {
-            dog_facts_message?.text = it.first().fact
+            dog_facts_message?.text = it.fact
         })
         dogFactsViewModel.getFirstDogImage().observe(this, Observer {
             Picasso.with(context).load(it.first().url).into(dog_facts_image)

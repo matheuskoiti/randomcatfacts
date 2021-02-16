@@ -17,7 +17,7 @@ class DogRepository {
 
     private val dogFactsApi by lazy {
         Retrofit.Builder()
-            .baseUrl("https://dog-facts-api.herokuapp.com/")
+            .baseUrl("https://some-random-api.ml/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build().create(DogService::class.java)
     }
@@ -34,7 +34,7 @@ class DogRepository {
         }
     }
 
-    suspend fun getDogFact(): List<DogFact> {
+    suspend fun getDogFact(): DogFact {
         /**
          * Instead of a simple try/catch, I could create a wrapper class to handle and return
          * success, generic or specific error
@@ -42,7 +42,7 @@ class DogRepository {
         return try {
             dogFactsApi.getRandomDogFact()
         } catch (e: Exception) {
-            arrayListOf(DogFact("An error has occurred, please click Next Fact to try again"))
+            DogFact("An error has occurred, please click Next Fact to try again")
         }
     }
 }

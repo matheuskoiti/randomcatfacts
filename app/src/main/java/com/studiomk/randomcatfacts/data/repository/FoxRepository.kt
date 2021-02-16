@@ -24,7 +24,7 @@ class FoxRepository {
         return try {
             foxApi.getRandomFoxImage()
         } catch (e: Exception) {
-            FoxImage(link = "https://i.imgur.com/u1cb7a7.jpg")
+            FoxImage(link = "https://i.imgur.com/okV0RkL.jpg")
         }
     }
 
