@@ -6,13 +6,13 @@ import retrofit2.http.GET
 
 interface PandaService {
     companion object {
-        const val RANDOM_DOG_IMAGE_URL = "img/panda"
-        const val RANDOM_DOG_FACT_URL = "facts/panda"
+        const val RANDOM_PANDA_IMAGE_URL = "img/panda"
+        const val RANDOM_PANDA_FACT_URL = "facts/panda"
     }
 
-    @GET(RANDOM_DOG_IMAGE_URL)
+    @GET(RANDOM_PANDA_IMAGE_URL)
     suspend fun getRandomPandaImage(): PandaImage
 
-    @GET(RANDOM_DOG_FACT_URL)
+    @GET(RANDOM_PANDA_FACT_URL)
     suspend fun getRandomPandaFact(): PandaFact
 }

@@ -19,4 +19,6 @@
     <string name="menu_cats">Cats</string>
     <string name="menu_dogs">Dogs</string>
     <string name="menu_pandas">Pandas</string>
+    <string name="menu_foxes">Foxes</string>
+
 </resources>
